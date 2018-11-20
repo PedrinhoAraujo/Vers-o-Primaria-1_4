@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>CPF</th>
+          <th>Nome</th>
+          <th>END</th>
+          <th>Email</th>
+          <th>Matricula</th>
+          <th>Perfil</th>
+          <th>Telefone</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registration of registrations; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ registration.CPF }}</td>
+          <td>{{ registration.Nome }}</td>
+          <td>{{ registration.END}}</td>
+          <td>{{ registration.email }}</td>
+          <td>{{registration.Matricula}}</td>
+          <td>{{ registration.Perfil }}</td>
+          <td>{{registration.Telefone}}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">Novo</button>
+    </div>
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="CPF-input" class="col-2 col-form-label">CPF</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.CPF" name="CPF">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Nome-input" class="col-2 col-form-label">Nome</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Nome" name="Nome">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="END-input" class="col-2 col-form-label">END</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.END" name="END">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-email-input" class="col-2 col-form-label">Email</label>
+        <div class="col-10">
+          <input class="form-control" type="email" [(ngModel)]="regModel.email" name="email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Matricula-input" class="col-2 col-form-label">Matricula</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Matricula" name="Matricula">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Perfil-input" class="col-2 col-form-label">Perfil</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Perfil" name="Perfil">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Telefone-input" class="col-2 col-form-label">Telefone</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Telefone" name="Telefone">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="example-password-input" class="col-2 col-form-label">Senha</label>
+        <div class="col-10">
+          <input class="form-control" type="password" [(ngModel)]="regModel.password" name="password">
+        </div>
+      </div>      
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+</div>

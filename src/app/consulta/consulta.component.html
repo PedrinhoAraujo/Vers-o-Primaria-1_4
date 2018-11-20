@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Id</th>
+          <th>Titulo</th>
+          <th>Descricao</th>
+          <th>Data Prevista</th>
+          <th>Status</th>          
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consulta of consultas; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ consulta.Id }}</td>
+          <td>{{ consulta.Titulo }}</td>
+          <td>{{ consulta.Descricao}}</td>
+          <td>{{ consulta.DataPrevista }}</td>
+          <td>{{consulta.Status}}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+         <!--   <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button> --->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+     <!---- <button type="submit" class="btn btn-primary" (click)="onNew()">Novo</button> -->
+    </div>
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="Id-input" class="col-2 col-form-label">Id</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Id" name="Id">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Titulo-input" class="col-2 col-form-label">Titulo</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Titulo" name="Titulo">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Descricao-input" class="col-2 col-form-label">Descricao</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Descricao" name="Descricao">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="DataPrevista-input" class="col-2 col-form-label">Data Prevista</label>
+        <div class="col-10">
+          <input class="form-control" type="DataPrevista" [(ngModel)]="regModel.DataPrevista" name="DataPrevista">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="Status-input" class="col-2 col-form-label">Status</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Status" name="Status">
+        </div>
+      </div>    
+      <!----
+      <div class="form-group row">
+       <label for="example-password-input" class="col-2 col-form-label">Senha</label>
+        <div class="col-10">
+          <input class="form-control" type="password" [(ngModel)]="regModel.password" name="password">
+        </div>
+      </div>  
+    -->   
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+</div>
